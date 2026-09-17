@@ -24,7 +24,9 @@
         "paths": {
             "@components/*": ["./src/components/*"],
             "@store/*": ["./src/store/*"],
-            "@app-types/*": ["./src/types/*"]
+            "@app-types/*": ["./src/types/*"],
+            "@assets/*": ["./src/assets/*"],
+            "@hooks/*": ["./src/hooks/*"]
         }
     },
     "include": ["src"]

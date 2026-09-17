@@ -20,6 +20,14 @@ export default defineConfig({
                 find: '@app-types',
                 replacement: path.resolve(import.meta.dirname, './src/types'),
             },
+            {
+                find: '@assets',
+                replacement: path.resolve(import.meta.dirname, './src/assets'),
+            },
+            {
+                find: '@hooks',
+                replacement: path.resolve(import.meta.dirname, './src/hooks'),
+            },
         ],
     },
 })

@@ -8,9 +8,9 @@ export const fetchJobs = createAsyncThunk<Job[]>('jobs/fetchAllJobs', async () =
         throw new Error(`Failed to fetch jobs: ${response.statusText}`)
     }
 
-    const data: Job[] = await response.json()
+    const data: { jobs: Job[] } = await response.json()
 
-    return data
+    return data.jobs
 })
 
 export type JobsStatus = 'idle' | 'pending' | 'succeeded' | 'failed'

@@ -1,14 +1,19 @@
-@import "tailwindcss";
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Inter", Helvetica, Arial, sans-serif;
-}
+@import 'tailwindcss';
 
 @theme {
-  --color-dm-blue: #0c3d91;
-  --color-dm-yellow: #ffc603;
-  --color-dm-red: #ee161f;
+    --color-dm-blue: #0c3d91;
+    --color-dm-yellow: #ffc603;
+    --color-dm-red: #ee161f;
+}
+
+@layer base {
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', Helvetica, Arial, sans-serif;
+    }
 }
