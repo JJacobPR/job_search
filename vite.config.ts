@@ -16,6 +16,10 @@ export default defineConfig({
                 find: '@store',
                 replacement: path.resolve(import.meta.dirname, './src/store'),
             },
+            {
+                find: '@app-types',
+                replacement: path.resolve(import.meta.dirname, './src/types'),
+            },
         ],
     },
 })

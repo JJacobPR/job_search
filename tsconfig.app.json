@@ -23,7 +23,8 @@
         "noFallthroughCasesInSwitch": true,
         "paths": {
             "@components/*": ["./src/components/*"],
-            "@store/*": ["./src/store/*"]
+            "@store/*": ["./src/store/*"],
+            "@app-types/*": ["./src/types/*"]
         }
     },
     "include": ["src"]
