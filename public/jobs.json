@@ -1,0 +1,597 @@
+{
+  "jobs": [
+    {
+      "id": "JOB-1001",
+      "title": "Softwareentwickler:in Java / Spring Boot (m/w/d)",
+      "department": "dmTECH – Backend Engineering",
+      "location": {
+        "city": "Karlsruhe",
+        "postalCode": "76133",
+        "lat": 49.0069,
+        "lon": 8.4037
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Mid",
+      "remote": "Hybrid",
+      "tags": [
+        "Java",
+        "Spring Boot",
+        "Microservices",
+        "Kubernetes"
+      ],
+      "postedAt": "2026-07-01",
+      "description": "Du entwickelst und betreibst Microservices fuer unsere Filial- und E-Commerce-Systeme im agilen Team."
+    },
+    {
+      "id": "JOB-1002",
+      "title": "Frontend-Entwickler:in Vue.js (m/w/d)",
+      "department": "dmTECH – Web Experience",
+      "location": {
+        "city": "Karlsruhe",
+        "postalCode": "76133",
+        "lat": 49.0069,
+        "lon": 8.4037
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Junior",
+      "remote": "Hybrid",
+      "tags": [
+        "Vue.js",
+        "TypeScript",
+        "CSS",
+        "Vite"
+      ],
+      "postedAt": "2026-07-03",
+      "description": "Du baust gemeinsam mit uns die naechste Generation unserer Kund:innen-Portale mit Vue 3 und TypeScript."
+    },
+    {
+      "id": "JOB-1003",
+      "title": "Fullstack-Entwickler:in React/Node (m/w/d)",
+      "department": "dmTECH – E-Commerce Platform",
+      "location": {
+        "city": "Karlsruhe",
+        "postalCode": "76133",
+        "lat": 49.0069,
+        "lon": 8.4037
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Senior",
+      "remote": "Remote",
+      "tags": [
+        "React",
+        "Node.js",
+        "GraphQL",
+        "AWS"
+      ],
+      "postedAt": "2026-06-20",
+      "description": "Als erfahrene:r Fullstack-Entwickler:in verantwortest du Teile unserer Shop-Plattform end-to-end."
+    },
+    {
+      "id": "JOB-1004",
+      "title": "DevOps Engineer (m/w/d)",
+      "department": "dmTECH – Platform Engineering",
+      "location": {
+        "city": "Karlsruhe",
+        "postalCode": "76133",
+        "lat": 49.0069,
+        "lon": 8.4037
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Senior",
+      "remote": "Hybrid",
+      "tags": [
+        "Kubernetes",
+        "Terraform",
+        "CI/CD",
+        "Azure"
+      ],
+      "postedAt": "2026-06-15",
+      "description": "Du gestaltest unsere Cloud-Infrastruktur und CI/CD-Pipelines fuer ueber 100 Entwicklungsteams mit."
+    },
+    {
+      "id": "JOB-1005",
+      "title": "Data Engineer (m/w/d)",
+      "department": "dmTECH – Data & Analytics",
+      "location": {
+        "city": "Karlsruhe",
+        "postalCode": "76133",
+        "lat": 49.0069,
+        "lon": 8.4037
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Mid",
+      "remote": "Hybrid",
+      "tags": [
+        "Python",
+        "Spark",
+        "Airflow",
+        "SQL"
+      ],
+      "postedAt": "2026-07-10",
+      "description": "Du baust robuste Datenpipelines fuer Sortiments- und Kundendaten und ermoeglichst Analysen im ganzen Konzern."
+    },
+    {
+      "id": "JOB-1006",
+      "title": "Machine Learning Engineer (m/w/d)",
+      "department": "dmTECH – AI & Search",
+      "location": {
+        "city": "Karlsruhe",
+        "postalCode": "76133",
+        "lat": 49.0069,
+        "lon": 8.4037
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Senior",
+      "remote": "Remote",
+      "tags": [
+        "Python",
+        "NLP",
+        "Search",
+        "Elasticsearch"
+      ],
+      "postedAt": "2026-07-05",
+      "description": "Du entwickelst Such- und Empfehlungssysteme fuer unsere Online-Kanaele, u.a. auf Basis von Elasticsearch."
+    },
+    {
+      "id": "JOB-1007",
+      "title": "Cloud Architect AWS (m/w/d)",
+      "department": "dmTECH – Platform Engineering",
+      "location": {
+        "city": "Mannheim",
+        "postalCode": "68159",
+        "lat": 49.4875,
+        "lon": 8.466
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Senior",
+      "remote": "Remote",
+      "tags": [
+        "AWS",
+        "Architecture",
+        "Security",
+        "Terraform"
+      ],
+      "postedAt": "2026-06-01",
+      "description": "Du entwirfst die Ziel-Cloud-Architektur fuer neue dmTECH-Produkte und beraetst Teams beim Cloud-Umzug."
+    },
+    {
+      "id": "JOB-1008",
+      "title": "QA / Test Automation Engineer (m/w/d)",
+      "department": "dmTECH – Quality Engineering",
+      "location": {
+        "city": "Karlsruhe",
+        "postalCode": "76133",
+        "lat": 49.0069,
+        "lon": 8.4037
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Mid",
+      "remote": "Hybrid",
+      "tags": [
+        "Playwright",
+        "Java",
+        "CI/CD",
+        "Testautomatisierung"
+      ],
+      "postedAt": "2026-07-08",
+      "description": "Du automatisierst End-to-End-Tests fuer unsere Filial- und Kassensysteme und sicherst die Release-Qualitaet."
+    },
+    {
+      "id": "JOB-1009",
+      "title": "Werkstudent Softwareentwicklung (m/w/d)",
+      "department": "dmTECH – Backend Engineering",
+      "location": {
+        "city": "Karlsruhe",
+        "postalCode": "76133",
+        "lat": 49.0069,
+        "lon": 8.4037
+      },
+      "employmentType": "Werkstudent",
+      "seniorityLevel": null,
+      "remote": "Hybrid",
+      "tags": [
+        "Java",
+        "Git",
+        "Scrum"
+      ],
+      "postedAt": "2026-07-15",
+      "description": "Du unterstuetzt ein agiles Team bei der Entwicklung interner Tools neben deinem Studium."
+    },
+    {
+      "id": "JOB-1010",
+      "title": "Praktikum UX/UI Design (m/w/d)",
+      "department": "dmTECH – Product Design",
+      "location": {
+        "city": "Karlsruhe",
+        "postalCode": "76133",
+        "lat": 49.0069,
+        "lon": 8.4037
+      },
+      "employmentType": "Praktikum",
+      "seniorityLevel": null,
+      "remote": "Vor Ort",
+      "tags": [
+        "Figma",
+        "User Research",
+        "Prototyping"
+      ],
+      "postedAt": "2026-07-20",
+      "description": "Du unterstuetzt unser Design-Team bei Nutzerinterviews, Wireframes und Prototypen fuer die dm-App."
+    },
+    {
+      "id": "JOB-1011",
+      "title": "UX/UI Designer (m/w/d)",
+      "department": "dmTECH – Product Design",
+      "location": {
+        "city": "Karlsruhe",
+        "postalCode": "76133",
+        "lat": 49.0069,
+        "lon": 8.4037
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Mid",
+      "remote": "Hybrid",
+      "tags": [
+        "Figma",
+        "Design Systems",
+        "Accessibility"
+      ],
+      "postedAt": "2026-06-25",
+      "description": "Du gestaltest zugaengliche, konsistente Nutzererlebnisse ueber unsere digitalen Produkte hinweg."
+    },
+    {
+      "id": "JOB-1012",
+      "title": "Product Owner E-Commerce (m/w/d)",
+      "department": "dmTECH – E-Commerce Platform",
+      "location": {
+        "city": "Köln",
+        "postalCode": "50667",
+        "lat": 50.9375,
+        "lon": 6.9603
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Senior",
+      "remote": "Remote",
+      "tags": [
+        "Product Management",
+        "Scrum",
+        "E-Commerce"
+      ],
+      "postedAt": "2026-06-10",
+      "description": "Du verantwortest die Roadmap eines Kernbereichs unseres Online-Shops gemeinsam mit einem crossfunktionalen Team."
+    },
+    {
+      "id": "JOB-1013",
+      "title": "Scrum Master (m/w/d)",
+      "department": "dmTECH – Agile Coaching",
+      "location": {
+        "city": "Stuttgart",
+        "postalCode": "70173",
+        "lat": 48.7758,
+        "lon": 9.1829
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Mid",
+      "remote": "Hybrid",
+      "tags": [
+        "Scrum",
+        "Kanban",
+        "Coaching"
+      ],
+      "postedAt": "2026-07-02",
+      "description": "Du coachst zwei agile Teams und hilfst, Zusammenarbeit und Lieferfaehigkeit kontinuierlich zu verbessern."
+    },
+    {
+      "id": "JOB-1014",
+      "title": "IT-Security Analyst (m/w/d)",
+      "department": "dmTECH – Security",
+      "location": {
+        "city": "Frankfurt am Main",
+        "postalCode": "60311",
+        "lat": 50.1109,
+        "lon": 8.6821
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Senior",
+      "remote": "Hybrid",
+      "tags": [
+        "SIEM",
+        "Incident Response",
+        "Security"
+      ],
+      "postedAt": "2026-06-05",
+      "description": "Du ueberwachst unsere Systeme auf Sicherheitsvorfaelle und entwickelst unser SOC kontinuierlich weiter."
+    },
+    {
+      "id": "JOB-1015",
+      "title": "Datenbankadministrator:in (m/w/d)",
+      "department": "dmTECH – Platform Engineering",
+      "location": {
+        "city": "Karlsruhe",
+        "postalCode": "76133",
+        "lat": 49.0069,
+        "lon": 8.4037
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Mid",
+      "remote": "Vor Ort",
+      "tags": [
+        "PostgreSQL",
+        "Oracle",
+        "Backup & Recovery"
+      ],
+      "postedAt": "2026-07-12",
+      "description": "Du betreust unsere zentralen Datenbanksysteme und sorgst fuer Performance, Sicherheit und Verfuegbarkeit."
+    },
+    {
+      "id": "JOB-1016",
+      "title": "Requirements Engineer (m/w/d)",
+      "department": "dmTECH – Business Analysis",
+      "location": {
+        "city": "Hamburg",
+        "postalCode": "20095",
+        "lat": 53.5511,
+        "lon": 9.9937
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Junior",
+      "remote": "Remote",
+      "tags": [
+        "Requirements Engineering",
+        "UML",
+        "Stakeholder Management"
+      ],
+      "postedAt": "2026-07-18",
+      "description": "Du erhebst und dokumentierst Anforderungen fuer neue Filial-IT-Systeme gemeinsam mit dem Fachbereich."
+    },
+    {
+      "id": "JOB-1017",
+      "title": "IT-Projektleiter:in (m/w/d)",
+      "department": "dmTECH – Program Management",
+      "location": {
+        "city": "Berlin",
+        "postalCode": "10117",
+        "lat": 52.52,
+        "lon": 13.405
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Senior",
+      "remote": "Hybrid",
+      "tags": [
+        "Projektmanagement",
+        "Stakeholder Management",
+        "IT-Rollout"
+      ],
+      "postedAt": "2026-06-08",
+      "description": "Du leitest ein bereichsuebergreifendes IT-Rollout-Projekt fuer unsere Filialen in der DACH-Region."
+    },
+    {
+      "id": "JOB-1018",
+      "title": "Cybersecurity Consultant (m/w/d)",
+      "department": "dmTECH – Security",
+      "location": {
+        "city": "München",
+        "postalCode": "80331",
+        "lat": 48.1351,
+        "lon": 11.582
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Senior",
+      "remote": "Remote",
+      "tags": [
+        "Penetration Testing",
+        "ISO 27001",
+        "Security"
+      ],
+      "postedAt": "2026-06-28",
+      "description": "Du beraetst interne Teams zu sicheren Architekturen und fuehrst Sicherheitsbewertungen neuer Systeme durch."
+    },
+    {
+      "id": "JOB-1019",
+      "title": "Business Analyst Digital Supply Chain (m/w/d)",
+      "department": "dmTECH – Supply Chain IT",
+      "location": {
+        "city": "Nürnberg",
+        "postalCode": "90402",
+        "lat": 49.4521,
+        "lon": 11.0767
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Mid",
+      "remote": "Hybrid",
+      "tags": [
+        "Supply Chain",
+        "SAP",
+        "Prozessanalyse"
+      ],
+      "postedAt": "2026-07-06",
+      "description": "Du analysierst und optimierst digitale Prozesse entlang unserer Lieferkette gemeinsam mit dem Fachbereich Logistik."
+    },
+    {
+      "id": "JOB-1020",
+      "title": "SAP Berater:in MM/WM (m/w/d)",
+      "department": "dmTECH – SAP Solutions",
+      "location": {
+        "city": "Dresden",
+        "postalCode": "01067",
+        "lat": 51.0504,
+        "lon": 13.7373
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Mid",
+      "remote": "Hybrid",
+      "tags": [
+        "SAP MM",
+        "SAP WM",
+        "Logistik"
+      ],
+      "postedAt": "2026-07-14",
+      "description": "Du betreust und entwickelst unsere SAP-Logistikmodule fuer die zentrale Warenwirtschaft weiter."
+    },
+    {
+      "id": "JOB-1021",
+      "title": "Verkaeufer:in Drogeriemarkt (m/w/d)",
+      "department": "Verkauf & Beratung",
+      "location": {
+        "city": "Karlsruhe",
+        "postalCode": "76133",
+        "lat": 49.0069,
+        "lon": 8.4037
+      },
+      "employmentType": "Teilzeit",
+      "seniorityLevel": null,
+      "remote": "Vor Ort",
+      "tags": [
+        "Kundenberatung",
+        "Kasse",
+        "Warenpraesentation"
+      ],
+      "postedAt": "2026-07-03",
+      "description": "Beratung und Verkauf in unserer Filiale in der Karlsruher Innenstadt."
+    },
+    {
+      "id": "JOB-1022",
+      "title": "Filialleiter:in dm-Markt (m/w/d)",
+      "department": "Verkauf & Beratung",
+      "location": {
+        "city": "Ettlingen",
+        "postalCode": "76275",
+        "lat": 48.9378,
+        "lon": 8.4067
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Mid",
+      "remote": "Vor Ort",
+      "tags": [
+        "Fuehrung",
+        "Personalplanung",
+        "Warenwirtschaft"
+      ],
+      "postedAt": "2026-06-28",
+      "description": "Fuehrung eines dm-Marktes inklusive Personal- und Warenverantwortung."
+    },
+    {
+      "id": "JOB-1023",
+      "title": "Lagerlogistik-Mitarbeiter:in (m/w/d)",
+      "department": "Logistik",
+      "location": {
+        "city": "Pforzheim",
+        "postalCode": "75172",
+        "lat": 48.8922,
+        "lon": 8.6946
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": null,
+      "remote": "Vor Ort",
+      "tags": [
+        "Kommissionierung",
+        "Warenannahme",
+        "Staplerschein"
+      ],
+      "postedAt": "2026-06-15",
+      "description": "Kommissionierung und Warenannahme in unserem Verteilzentrum."
+    },
+    {
+      "id": "JOB-1024",
+      "title": "Verkaeufer:in Drogeriemarkt (m/w/d)",
+      "department": "Verkauf & Beratung",
+      "location": {
+        "city": "Heidelberg",
+        "postalCode": "69115",
+        "lat": 49.3988,
+        "lon": 8.6724
+      },
+      "employmentType": "Minijob",
+      "seniorityLevel": null,
+      "remote": "Vor Ort",
+      "tags": [
+        "Kundenberatung",
+        "Kasse"
+      ],
+      "postedAt": "2026-07-01",
+      "description": "Aushilfe im Verkauf, flexible Einsatzzeiten nach Absprache."
+    },
+    {
+      "id": "JOB-1025",
+      "title": "Werkstudent IT-Support (m/w/d)",
+      "department": "dmTECH – IT Support",
+      "location": {
+        "city": "Karlsruhe",
+        "postalCode": "",
+        "lat": null,
+        "lon": null
+      },
+      "employmentType": "Werkstudent",
+      "seniorityLevel": null,
+      "remote": "Hybrid",
+      "tags": [
+        "Support",
+        "Ticketsystem",
+        "Windows"
+      ],
+      "postedAt": "2026-07-12",
+      "description": "Unterstuetzung des internen IT-Supports neben dem Studium."
+    },
+    {
+      "id": "JOB-1026",
+      "title": "Lagerlogistik-Mitarbeiter:in (m/w/d)",
+      "department": "Logistik",
+      "location": {
+        "city": "Freiburg im Breisgau",
+        "postalCode": "79098",
+        "lat": 47.999,
+        "lon": 7.8421
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": null,
+      "remote": "Vor Ort",
+      "tags": [
+        "Kommissionierung",
+        "Warenannahme"
+      ],
+      "postedAt": "2026-06-22",
+      "description": "Warenannahme und innerbetrieblicher Transport in unserem Regionallager."
+    },
+    {
+      "id": "JOB-1027",
+      "title": "Verkaeufer:in Drogeriemarkt (m/w/d)",
+      "department": "Verkauf & Beratung",
+      "location": {
+        "city": "Bonn",
+        "postalCode": "",
+        "lat": null,
+        "lon": null
+      },
+      "employmentType": "Teilzeit",
+      "seniorityLevel": null,
+      "remote": "Vor Ort",
+      "tags": [
+        "Kundenberatung",
+        "Kasse"
+      ],
+      "postedAt": "2026-06-18",
+      "description": "Beratung und Verkauf in unserer Filiale in der Bonner Innenstadt."
+    },
+    {
+      "id": "JOB-1028",
+      "title": "Systemadministrator:in Netzwerk (m/w/d)",
+      "department": "dmTECH – Infrastructure",
+      "location": {
+        "city": "Mannheim",
+        "postalCode": "68159",
+        "lat": 49.4875,
+        "lon": 8.466
+      },
+      "employmentType": "Vollzeit",
+      "seniorityLevel": "Mid",
+      "remote": "Hybrid",
+      "tags": [
+        "Netzwerk",
+        "Firewall",
+        "Monitoring"
+      ],
+      "postedAt": "2026-06-30",
+      "description": "Betrieb und Weiterentwicklung des Filial-Netzwerks."
+    }
+  ]
+}
