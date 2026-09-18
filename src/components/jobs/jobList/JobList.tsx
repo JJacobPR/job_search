@@ -71,17 +71,7 @@ export const JobList = ({ jobs }: JobListProps) => {
                 postedBefore: postedBefore || undefined,
             })
         )
-    }, [
-        postalCode,
-        city,
-        radius,
-        employmentType,
-        seniorityLevel,
-        remoteOption,
-        department,
-        postedAfter,
-        postedBefore,
-    ])
+    }, [postalCode, city, radius, employmentType, seniorityLevel, remoteOption, department, postedAfter, postedBefore])
 
     const renderContent = () => {
         if (jobs.length === 0) {

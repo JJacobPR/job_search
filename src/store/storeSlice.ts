@@ -160,9 +160,7 @@ export const selectSortedJobs = createSelector([selectFilteredJobs, selectSort],
                     ? compareAsc(parseISO(a.postedAt), parseISO(b.postedAt))
                     : compareDesc(parseISO(a.postedAt), parseISO(b.postedAt))
             case 'title':
-                return sort.order === 'asc'
-                    ? a.title.localeCompare(b.title)
-                    : b.title.localeCompare(a.title)
+                return sort.order === 'asc' ? a.title.localeCompare(b.title) : b.title.localeCompare(a.title)
             default:
                 return 0
         }

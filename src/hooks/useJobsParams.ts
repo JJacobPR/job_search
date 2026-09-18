@@ -80,10 +80,20 @@ export const useJobsParams = () => {
     }
 
     return {
-        page, pageLimit, sortField, sortOrder,
-        searchQuery, postalCode, city, radius,
-        employmentType, seniorityLevel, remoteOption, department,
-        postedAfter, postedBefore,
+        page,
+        pageLimit,
+        sortField,
+        sortOrder,
+        searchQuery,
+        postalCode,
+        city,
+        radius,
+        employmentType,
+        seniorityLevel,
+        remoteOption,
+        department,
+        postedAfter,
+        postedBefore,
         updateParams,
     }
 }

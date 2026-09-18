@@ -8,7 +8,7 @@ const jobsLoader = ({ request }: { request: Request }) => {
     const params = url.searchParams
 
     const missingDefaults = (Object.entries(JOBS_PARAMS_DEFAULTS) as [string, string | number][]).filter(
-        ([key]) => !params.has(key),
+        ([key]) => !params.has(key)
     )
 
     if (missingDefaults.length > 0) {

@@ -21,5 +21,4 @@ export const CITY_COORDS_MAP = new Map<string, CityCoords>([
     ['bonn', { lat: 50.7374, lon: 7.0982 }],
 ])
 
-export const getCityCoords = (city: string): CityCoords | undefined =>
-    CITY_COORDS_MAP.get(city.trim().toLowerCase())
+export const getCityCoords = (city: string): CityCoords | undefined => CITY_COORDS_MAP.get(city.trim().toLowerCase())
