@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { Job } from '@app-types/jobs'
 import { JobItem } from '@components/jobs/jobList/JobItem'
 import { Pagination } from '@components/utils/Pagination'
@@ -13,6 +13,10 @@ interface JobListProps {
 export const JobList = ({ jobs }: JobListProps) => {
     const [pageLimit, setPageLimit] = useState(10)
     const { pageNumber, pageCount, setPage, getPageData, nextPage, prevPage } = usePagination(jobs, pageLimit)
+
+    useEffect(() => {
+        setPage(0)
+    }, [jobs])
 
     const renderContent = () => {
         if (jobs.length === 0) {

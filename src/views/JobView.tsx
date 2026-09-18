@@ -1,11 +1,12 @@
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '@store/store'
-import { fetchJobs } from '@store/storeSlice'
-import { SearchBar } from '@components/jobs/SearchBar'
+import { fetchJobs, selectFilteredJobs } from '@store/storeSlice'
+import { SearchBar } from '@components/jobs/searchBar/SearchBar'
 import { JobList } from '@components/jobs/jobList/JobList'
 import { Spinner } from '@components/utils/Spinner'
 export const JobView = () => {
-    const { status, jobs } = useAppSelector((state) => state.jobsSlice)
+    const { status } = useAppSelector((state) => state.jobsSlice)
+    const jobs = useAppSelector(selectFilteredJobs)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
