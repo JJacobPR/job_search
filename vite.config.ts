@@ -32,6 +32,10 @@ export default defineConfig({
                 find: '@views',
                 replacement: path.resolve(import.meta.dirname, './src/views'),
             },
+            {
+                find: '@helpers',
+                replacement: path.resolve(import.meta.dirname, './src/helpers'),
+            },
         ],
     },
 })

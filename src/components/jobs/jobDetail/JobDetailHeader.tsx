@@ -1,16 +1,14 @@
 import type { Job } from '@app-types/jobs'
 import locationIcon from '@assets/location-icon.svg'
+import { format } from 'date-fns'
+import { de } from 'date-fns/locale'
 
 interface JobDetailHeaderProps {
     job: Job
 }
 
 export const JobDetailHeader = ({ job }: JobDetailHeaderProps) => {
-    const postedDate = new Date(job.postedAt).toLocaleDateString('de-DE', {
-        day: '2-digit',
-        month: 'long',
-        year: 'numeric',
-    })
+    const postedDate = format(new Date(job.postedAt), 'dd. MMMM yyyy', { locale: de })
 
     return (
         <>

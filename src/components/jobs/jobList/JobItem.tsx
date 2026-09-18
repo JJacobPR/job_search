@@ -1,5 +1,7 @@
 import type { Job } from '@app-types/jobs'
 import locationIcon from '@assets/location-icon.svg'
+import { format } from 'date-fns'
+import { de } from 'date-fns/locale'
 import { Link } from 'react-router'
 
 interface JobItemProps {
@@ -7,14 +9,10 @@ interface JobItemProps {
 }
 
 export const JobItem = ({ job }: JobItemProps) => {
-    const postedDate = new Date(job.postedAt).toLocaleDateString('de-DE', {
-        day: '2-digit',
-        month: 'short',
-        year: 'numeric',
-    })
+    const postedDate = format(new Date(job.postedAt), 'dd. MMM yyyy', { locale: de })
 
     return (
-        <Link to={`/jobs/${job.id}`} className="flex bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer overflow-hidden border border-gray-100">
+        <div className="flex bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden border border-gray-100">
             <div className="w-1.5 bg-dm-yellow shrink-0" />
             <div className="flex-1 p-5 sm:p-6">
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-2">
@@ -32,25 +30,33 @@ export const JobItem = ({ job }: JobItemProps) => {
                         </>
                     )}
                 </div>
-                <div className="flex flex-wrap gap-1.5">
-                    <span className="px-2.5 py-0.5 bg-dm-blue/10 text-dm-blue text-xs font-medium rounded-full">
-                        {job.employmentType}
-                    </span>
-                    {job.seniorityLevel && (
-                        <span className="px-2.5 py-0.5 bg-gray-100 text-gray-600 text-xs font-medium rounded-full">
-                            {job.seniorityLevel}
+                <div className="flex items-end justify-between gap-4">
+                    <div className="flex flex-wrap gap-1.5">
+                        <span className="px-2.5 py-0.5 bg-dm-blue/10 text-dm-blue text-xs font-medium rounded-full">
+                            {job.employmentType}
                         </span>
-                    )}
-                    {job.tags.slice(0, 4).map((tag) => (
-                        <span
-                            key={tag}
-                            className="px-2.5 py-0.5 bg-gray-50 text-gray-500 text-xs rounded-full border border-gray-200"
-                        >
-                            {tag}
-                        </span>
-                    ))}
+                        {job.seniorityLevel && (
+                            <span className="px-2.5 py-0.5 bg-gray-100 text-gray-600 text-xs font-medium rounded-full">
+                                {job.seniorityLevel}
+                            </span>
+                        )}
+                        {job.tags.slice(0, 4).map((tag) => (
+                            <span
+                                key={tag}
+                                className="px-2.5 py-0.5 bg-gray-50 text-gray-500 text-xs rounded-full border border-gray-200"
+                            >
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                    <Link
+                        to={`/jobs/${job.id}`}
+                        className="shrink-0 px-4 py-2 bg-dm-blue text-white text-sm font-semibold rounded-lg hover:bg-dm-blue/90 transition-colors"
+                    >
+                        Apply
+                    </Link>
                 </div>
             </div>
-        </Link>
+        </div>
     )
 }

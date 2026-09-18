@@ -27,7 +27,8 @@
             "@app-types/*": ["./src/types/*"],
             "@assets/*": ["./src/assets/*"],
             "@hooks/*": ["./src/hooks/*"],
-            "@views/*": ["./src/views/*"]
+            "@views/*": ["./src/views/*"],
+            "@helpers/*": ["./src/helpers/*"]
         }
     },
     "include": ["src"]

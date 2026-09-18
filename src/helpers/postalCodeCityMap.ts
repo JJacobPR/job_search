@@ -1,0 +1,16 @@
+export const POSTAL_CODE_CITY_MAP = new Map<string, string>([
+    ['01067', 'Dresden'],
+    ['10117', 'Berlin'],
+    ['20095', 'Hamburg'],
+    ['50667', 'Köln'],
+    ['60311', 'Frankfurt am Main'],
+    ['68159', 'Mannheim'],
+    ['69115', 'Heidelberg'],
+    ['70173', 'Stuttgart'],
+    ['75172', 'Pforzheim'],
+    ['76133', 'Karlsruhe'],
+    ['76275', 'Ettlingen'],
+    ['79098', 'Freiburg im Breisgau'],
+    ['80331', 'München'],
+    ['90402', 'Nürnberg'],
+])
