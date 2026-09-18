@@ -2,7 +2,8 @@ import { createAsyncThunk, createSelector, createSlice, type PayloadAction } fro
 import type { DepartmentType, EmploymentType, Job, RemoteOption, SeniorityLevel } from '@app-types/jobs'
 import type { RootState } from './store'
 import { getDistanceInKm } from '@helpers/getDistanceFromCoords'
-import { parseISO, isAfter, isBefore, startOfDay, endOfDay } from 'date-fns'
+import { getCityCoords } from '@helpers/cityCoordsMap'
+import { parseISO, isAfter, isBefore, startOfDay, endOfDay, compareAsc, compareDesc } from 'date-fns'
 
 export const fetchJobs = createAsyncThunk<Job[]>('jobs/fetchAllJobs', async () => {
     const response = await fetch('/jobs.json')
@@ -20,8 +21,6 @@ export type JobsStatus = 'idle' | 'pending' | 'succeeded' | 'failed'
 
 export interface JobsFilters {
     searchQuery: string
-    lat?: number
-    lon?: number
     radius?: number
     city?: string
     postalCode?: string
@@ -33,16 +32,23 @@ export interface JobsFilters {
     postedAfter?: string
 }
 
+export interface JobsSort {
+    field: 'postedAt' | 'title'
+    order: 'asc' | 'desc'
+}
+
 export interface JobsState {
     jobs: Job[]
     status: JobsStatus
     error?: string
+    sort: JobsSort
     filters: JobsFilters
 }
 
 const initialState: JobsState = {
     jobs: [],
     status: 'idle',
+    sort: { field: 'postedAt', order: 'desc' },
     filters: {
         searchQuery: '',
     },
@@ -57,6 +63,9 @@ export const jobSlice = createSlice({
         },
         setAdvancedFilters: (state, action: PayloadAction<Partial<JobsFilters>>) => {
             state.filters = { ...state.filters, ...action.payload }
+        },
+        setSort: (state, action: PayloadAction<JobsSort>) => {
+            state.sort = action.payload
         },
     },
     extraReducers: (builder) => {
@@ -76,24 +85,22 @@ export const jobSlice = createSlice({
     },
 })
 
-export const { setSearchQuery, setAdvancedFilters } = jobSlice.actions
+export const { setSearchQuery, setAdvancedFilters, setSort } = jobSlice.actions
 export default jobSlice.reducer
 
 // --- Selectors ---
 const selectAllJobs = (state: RootState) => state.jobsSlice.jobs
 const selectFilters = (state: RootState) => state.jobsSlice.filters
+const selectSort = (state: RootState) => state.jobsSlice.sort
 
 export const selectFilteredJobs = createSelector([selectAllJobs, selectFilters], (jobs, filters) => {
     const searchQuery = filters.searchQuery?.trim().toLowerCase() ?? ''
 
     const postalCode = filters.postalCode?.trim() ?? ''
     const cityFilter = filters.city?.trim().toLowerCase() ?? ''
-
-    const hasRadiusFilter =
-        typeof filters.lat === 'number' &&
-        typeof filters.lon === 'number' &&
-        typeof filters.radius === 'number' &&
-        filters.radius > 0
+    const hasRadius = typeof filters.radius === 'number' && filters.radius > 0
+    const hasLocationInput = !!cityFilter || !!postalCode
+    const searchCoords = cityFilter && hasRadius ? getCityCoords(cityFilter) : undefined
 
     const hasDateFilter = !!(filters.postedAfter || filters.postedBefore)
     const filterAfterDate = filters.postedAfter ? startOfDay(parseISO(filters.postedAfter)) : null
@@ -109,13 +116,27 @@ export const selectFilteredJobs = createSelector([selectAllJobs, selectFilters],
         // 2. SEARCH QUERY MATCH
         if (searchQuery && !job.title.toLowerCase().includes(searchQuery)) return false
 
-        // 3. POSTAL CODE & CITY MATCH
-        // When a valid postal code is entered the form auto-fills city, so both are set together.
-        // Matching either field covers jobs that share the city but have no postal code.
-        if (postalCode || cityFilter) {
-            const matchesPostal = postalCode && job.location.postalCode === postalCode
-            const matchesCity = cityFilter && job.location.city.toLowerCase().includes(cityFilter)
-            if (!matchesPostal && !matchesCity) return false
+        // 3. LOCATION FILTER
+        if (hasLocationInput) {
+            if (cityFilter && hasRadius) {
+                // Geocoded radius: city coords as search origin, job coords with city fallback
+                if (!searchCoords) return false
+
+                const jobCoords =
+                    typeof job.location.lat === 'number' && typeof job.location.lon === 'number'
+                        ? { lat: job.location.lat, lon: job.location.lon }
+                        : getCityCoords(job.location.city)
+
+                if (!jobCoords) return false
+
+                const distance = getDistanceInKm(jobCoords.lat, jobCoords.lon, searchCoords.lat, searchCoords.lon)
+                if (distance > filters.radius!) return false
+            } else {
+                // Plain match: exact postal code or city name substring
+                const matchesPostal = !!postalCode && job.location.postalCode === postalCode
+                const matchesCity = !!cityFilter && job.location.city.toLowerCase().includes(cityFilter)
+                if (!matchesPostal && !matchesCity) return false
+            }
         }
 
         // 4. DATE RANGE MATCH
@@ -125,18 +146,25 @@ export const selectFilteredJobs = createSelector([selectAllJobs, selectFilters],
             if (filterBeforeDate && isAfter(jobDate, filterBeforeDate)) return false
         }
 
-        // 5. GEOGRAPHIC DISTANCE MATCH
-        if (hasRadiusFilter) {
-            const jobLat = job.location?.lat
-            const jobLon = job.location?.lon
-
-            // Exclude jobs that don't have coordinates when location filter is active
-            if (typeof jobLat !== 'number' || typeof jobLon !== 'number') return false
-
-            const distance = getDistanceInKm(jobLat, jobLon, filters.lat!, filters.lon!)
-            if (distance > filters.radius!) return false
-        }
-
         return true
+    })
+})
+
+export const selectSortedJobs = createSelector([selectFilteredJobs, selectSort], (filteredJobs, sort) => {
+    const jobsToSort = [...filteredJobs]
+
+    return jobsToSort.sort((a, b) => {
+        switch (sort.field) {
+            case 'postedAt':
+                return sort.order === 'asc'
+                    ? compareAsc(parseISO(a.postedAt), parseISO(b.postedAt))
+                    : compareDesc(parseISO(a.postedAt), parseISO(b.postedAt))
+            case 'title':
+                return sort.order === 'asc'
+                    ? a.title.localeCompare(b.title)
+                    : b.title.localeCompare(a.title)
+            default:
+                return 0
+        }
     })
 })

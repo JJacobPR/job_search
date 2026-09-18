@@ -1,15 +1,12 @@
 import { useEffect } from 'react'
 import { useForm, type SubmitHandler } from 'react-hook-form'
-import { useAppDispatch } from '@store/store'
-import { setAdvancedFilters } from '@store/storeSlice'
+import { useJobsParams } from '@hooks/useJobsParams'
 import { POSTAL_CODE_CITY_MAP } from '@helpers/postalCodeCityMap'
 import type { DepartmentType, EmploymentType, RemoteOption, SeniorityLevel } from '@app-types/jobs'
 
 interface AdvancedFiltersFormValues {
     postalCode: string
     city: string
-    lat: string
-    lon: string
     radius: string
     employmentType: EmploymentType | ''
     seniorityLevel: SeniorityLevel | ''
@@ -47,8 +44,6 @@ const DEPARTMENT_OPTIONS: DepartmentType[] = [
 const DEFAULT_VALUES: AdvancedFiltersFormValues = {
     postalCode: '',
     city: '',
-    lat: '',
-    lon: '',
     radius: '',
     employmentType: '',
     seniorityLevel: '',
@@ -65,10 +60,44 @@ const selectClass =
     'w-full px-3 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-dm-blue/20 focus:border-dm-blue text-gray-600 bg-white text-sm'
 
 export const AdvancedFilters = () => {
-    const dispatch = useAppDispatch()
-    const { register, handleSubmit, watch, setValue, reset, getValues, formState: { errors } } = useForm<AdvancedFiltersFormValues>({
+    const {
+        postalCode: postalCodeParam,
+        city: cityParam,
+        radius: radiusParam,
+        employmentType: employmentTypeParam,
+        seniorityLevel: seniorityLevelParam,
+        remoteOption: remoteOptionParam,
+        department: departmentParam,
+        postedAfter: postedAfterParam,
+        postedBefore: postedBeforeParam,
+        updateParams,
+    } = useJobsParams()
+
+    const {
+        register,
+        handleSubmit,
+        watch,
+        setValue,
+        reset,
+        getValues,
+        formState: { errors },
+    } = useForm<AdvancedFiltersFormValues>({
         defaultValues: DEFAULT_VALUES,
     })
+
+    useEffect(() => {
+        reset({
+            postalCode: postalCodeParam,
+            city: cityParam,
+            radius: radiusParam,
+            employmentType: (employmentTypeParam as EmploymentType | '') || '',
+            seniorityLevel: (seniorityLevelParam as SeniorityLevel | '') || '',
+            remoteOption: (remoteOptionParam as RemoteOption | '') || '',
+            department: (departmentParam as DepartmentType | '') || '',
+            postedAfter: postedAfterParam,
+            postedBefore: postedBeforeParam,
+        })
+    }, [])
 
     const postalCode = watch('postalCode')
     const mappedCity = POSTAL_CODE_CITY_MAP.get(postalCode.trim())
@@ -84,8 +113,6 @@ export const AdvancedFilters = () => {
     const onSubmit: SubmitHandler<AdvancedFiltersFormValues> = ({
         city,
         postalCode,
-        lat,
-        lon,
         radius,
         employmentType,
         seniorityLevel,
@@ -94,40 +121,32 @@ export const AdvancedFilters = () => {
         postedAfter,
         postedBefore,
     }) => {
-        dispatch(
-            setAdvancedFilters({
-                city,
-                postalCode,
-                lat: lat ? Number(lat) : undefined,
-                lon: lon ? Number(lon) : undefined,
-                radius: radius ? Number(radius) : undefined,
-                employmentType: employmentType || undefined,
-                seniorityLevel: seniorityLevel || undefined,
-                remoteOption: remoteOption || undefined,
-                department: department || undefined,
-                postedAfter: postedAfter || undefined,
-                postedBefore: postedBefore || undefined,
-            }),
-        )
+        updateParams({
+            postalCode,
+            city,
+            radius,
+            employmentType,
+            seniorityLevel,
+            remoteOption,
+            department,
+            postedAfter,
+            postedBefore,
+        })
     }
 
     const handleClearFilters = () => {
         reset(DEFAULT_VALUES)
-        dispatch(
-            setAdvancedFilters({
-                city: '',
-                postalCode: '',
-                lat: undefined,
-                lon: undefined,
-                radius: undefined,
-                employmentType: undefined,
-                seniorityLevel: undefined,
-                remoteOption: undefined,
-                department: undefined,
-                postedAfter: undefined,
-                postedBefore: undefined,
-            })
-        )
+        updateParams({
+            postalCode: '',
+            city: '',
+            radius: '',
+            employmentType: '',
+            seniorityLevel: '',
+            remoteOption: '',
+            department: '',
+            postedAfter: '',
+            postedBefore: '',
+        })
     }
 
     return (
@@ -140,9 +159,7 @@ export const AdvancedFilters = () => {
                         type="text"
                         className={inputClass}
                     />
-                    {errors.postalCode && (
-                        <span className="text-xs text-red-500">{errors.postalCode.message}</span>
-                    )}
+                    {errors.postalCode && <span className="text-xs text-red-500">{errors.postalCode.message}</span>}
                 </label>
                 <label className="flex flex-col gap-1">
                     <span className={labelClass}>City</span>
@@ -158,34 +175,13 @@ export const AdvancedFilters = () => {
                     />
                 </label>
                 <label className="flex flex-col gap-1">
-                    <span className={labelClass}>Latitude</span>
-                    <input
-                        {...register('lat', {
-                            validate: (v) => (!v && (getValues('lon') || getValues('radius'))) ? 'Required with lon & radius' : true,
-                        })}
-                        type="number"
-                        step="any"
-                        className={inputClass}
-                    />
-                    {errors.lat && <span className="text-xs text-red-500">{errors.lat.message}</span>}
-                </label>
-                <label className="flex flex-col gap-1">
-                    <span className={labelClass}>Longitude</span>
-                    <input
-                        {...register('lon', {
-                            validate: (v) => (!v && (getValues('lat') || getValues('radius'))) ? 'Required with lat & radius' : true,
-                        })}
-                        type="number"
-                        step="any"
-                        className={inputClass}
-                    />
-                    {errors.lon && <span className="text-xs text-red-500">{errors.lon.message}</span>}
-                </label>
-                <label className="flex flex-col gap-1">
                     <span className={labelClass}>Radius</span>
                     <select
                         {...register('radius', {
-                            validate: (v) => (!v && (getValues('lat') || getValues('lon'))) ? 'Required with lat & lon' : true,
+                            validate: (v) =>
+                                v && !getValues('city') && !getValues('postalCode')
+                                    ? 'City or postal code required'
+                                    : true,
                         })}
                         className={selectClass}
                     >
@@ -255,9 +251,7 @@ export const AdvancedFilters = () => {
                         type="date"
                         className={inputClass}
                     />
-                    {errors.postedAfter && (
-                        <span className="text-xs text-red-500">{errors.postedAfter.message}</span>
-                    )}
+                    {errors.postedAfter && <span className="text-xs text-red-500">{errors.postedAfter.message}</span>}
                 </label>
                 <label className="flex flex-col gap-1">
                     <span className={labelClass}>Posted before</span>
@@ -272,22 +266,20 @@ export const AdvancedFilters = () => {
                         type="date"
                         className={inputClass}
                     />
-                    {errors.postedBefore && (
-                        <span className="text-xs text-red-500">{errors.postedBefore.message}</span>
-                    )}
+                    {errors.postedBefore && <span className="text-xs text-red-500">{errors.postedBefore.message}</span>}
                 </label>
             </div>
             <div className="flex justify-end gap-2 mt-3">
                 <button
                     type="button"
                     onClick={handleClearFilters}
-                    className="px-4 py-2.5 border border-gray-300 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-dm-blue/20"
+                    className="px-4 py-2.5 border border-gray-300 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-dm-blue/20 cursor-pointer"
                 >
                     Clear filters
                 </button>
                 <button
                     type="submit"
-                    className="px-6 py-2.5 bg-dm-blue text-white rounded-lg text-sm font-medium hover:bg-blue-900 transition-colors focus:outline-none focus:ring-2 focus:ring-dm-blue/30 focus:ring-offset-2"
+                    className="px-6 py-2.5 bg-dm-blue text-white rounded-lg text-sm font-medium hover:bg-blue-900 transition-colors focus:outline-none focus:ring-2 focus:ring-dm-blue/30 focus:ring-offset-2 cursor-pointer"
                 >
                     Apply
                 </button>

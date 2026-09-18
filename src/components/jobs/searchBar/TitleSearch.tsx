@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react'
-import { useAppDispatch } from '@store/store'
-import { setSearchQuery } from '@store/storeSlice'
+import { useJobsParams } from '@hooks/useJobsParams'
 
 const DEBOUNCE_DELAY = 300
 
 export const TitleSearch = () => {
-    const dispatch = useAppDispatch()
-    const [searchValue, setSearchValue] = useState('')
+    const { searchQuery: searchQueryParam, updateParams } = useJobsParams()
+    const [searchValue, setSearchValue] = useState(searchQueryParam)
 
+    // Debounce writing to URL to avoid param churn while typing
     useEffect(() => {
         const timer = setTimeout(() => {
-            dispatch(setSearchQuery(searchValue))
+            updateParams({ searchQuery: searchValue })
         }, DEBOUNCE_DELAY)
 
         return () => clearTimeout(timer)
-    }, [searchValue, dispatch])
+    }, [searchValue])
 
     return (
         <input
