@@ -70,7 +70,7 @@ export const jobSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchJobs.pending, (state, action) => {
+            .addCase(fetchJobs.pending, (state, _action) => {
                 state.status = 'pending'
                 state.error = undefined
             })
