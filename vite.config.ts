@@ -28,6 +28,10 @@ export default defineConfig({
                 find: '@hooks',
                 replacement: path.resolve(import.meta.dirname, './src/hooks'),
             },
+            {
+                find: '@views',
+                replacement: path.resolve(import.meta.dirname, './src/views'),
+            },
         ],
     },
 })

@@ -1,5 +1,6 @@
 import type { Job } from '@app-types/jobs'
 import locationIcon from '@assets/location-icon.svg'
+import { Link } from 'react-router'
 
 interface JobItemProps {
     job: Job
@@ -13,7 +14,7 @@ export const JobItem = ({ job }: JobItemProps) => {
     })
 
     return (
-        <div className="flex bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer overflow-hidden border border-gray-100">
+        <Link to={`/jobs/${job.id}`} className="flex bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer overflow-hidden border border-gray-100">
             <div className="w-1.5 bg-dm-yellow shrink-0" />
             <div className="flex-1 p-5 sm:p-6">
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-2">
@@ -50,6 +51,6 @@ export const JobItem = ({ job }: JobItemProps) => {
                     ))}
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
